@@ -9,13 +9,17 @@ const carrozzaNumero = document.getElementById("carrozzaNumero");
 const codiceCp = document.getElementById("codiceCp");
 let divPrezzoFinale = document.getElementById("prezzoFinale");
 let prezzoFinale = 0;
-let inputName = inputNameElement.textContent
+let inputName = document.getElementById("nomeUtente")
+
+
 submitButton.addEventListener("click", function () {
 
+
+    console.log(inputNameElement, inputName)
+    inputName.innerHTML = inputNameElement.value
     const etaUtente = parseInt(etaUtenteElement.value)
     let kmDaPercorrere = parseFloat(kmDaPercorrereElement.value)
     prezzoViaggio = parseInt(kmDaPercorrere) * prezzoKm
-
 
     if (etaUtente < 18) {
 
@@ -32,16 +36,16 @@ submitButton.addEventListener("click", function () {
     }
 
 
-    inputNameElement.innerHTML = inputName;
+
     divPrezzoFinale.innerHTML = parseFloat(prezzoFinale);
     carrozzaNumero.innerHTML = Math.random().toFixed(1) * 10;
     codiceCp.innerHTML = Math.random().toFixed(5) * 100000;
     document.getElementById("biglietto").classList.remove('d-none');
 })
 clearAll.addEventListener("click", function () {
-    inputName.value = "";
-    kmDaPercorrere.value = "";
-    etaUtente.value = "";
+    inputNameElement.value = "";
+    kmDaPercorrereElement.value = "";
+    etaUtenteElement.value = "";
     document.getElementById("biglietto").classList.add('d-none');
 
 })
