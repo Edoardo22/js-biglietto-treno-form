@@ -11,9 +11,25 @@ const codiceCp = document.getElementById("codiceCp");
 let divPrezzoFinale = document.getElementById("prezzoFinale");
 let prezzoFinale = 0;
 
+if (etaUtente < 18) {
+
+    scontoMinori = (prezzoViaggio * (20 / 100))
+    prezzoFinale = (Math.round((prezzoViaggio - scontoMinori) * 100) / 100).toFixed(2);
+
+} else if (etaUtente > 65) {
+
+    scontoAnziani = (prezzoViaggio * (40 / 100))
+    prezzoFinale = (Math.round((prezzoViaggio - scontoAnziani) * 100) / 100).toFixed(2);
+}
+
+else {
+    prezzoFinale = (Math.round(prezzoViaggio * 100) / 100).toFixed(2);
+}
+
+
 submitButton.addEventListener("click", function () {
     console.log(inputName.value, kmDaPercorrere.value, etaUtente.value);
-    inputName.innerHTML = inputName;
+    inputName.innerHTML = inputName.value;
     divPrezzoFinale.innerHTML = prezzoFinale;
     carrozzaNumero.innerHTML = Math.random().toFixed(1) * 10;
     codiceCp.innerHTML = Math.random().toFixed(5) * 100000;
@@ -26,17 +42,3 @@ clearAll.addEventListener("click", function () {
     document.getElementById("biglietto").classList.add('d-none');
 })
 
-if (etaUtente < 18) {
-
-    scontoMinori = (prezzoViaggio * (20 / 100))
-    prezzoFinale.innerHTML = "prezzo:" + (Math.round((prezzoViaggio - scontoMinori) * 100) / 100).toFixed(2);
-
-} else if (etaUtente > 65) {
-
-    scontoAnziani = (prezzoViaggio * (40 / 100))
-    prezzoFinale.innerHTML = "prezzo:" + (Math.round((prezzoViaggio - scontoAnziani) * 100) / 100).toFixed(2);
-}
-
-else {
-    prezzoFinale.innerHTML = "prezzo:" + (Math.round(prezzoViaggio * 100) / 100).toFixed(2);
-} 
